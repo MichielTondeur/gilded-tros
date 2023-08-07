@@ -8,9 +8,11 @@ describe("GildedTros", () => {
   const commonTestCases: [Item, number, number][] = [
     [new Item("Common Item", 2, 3), 1, 2],
     [new Item("Common Item", 2, 0), 1, 0],
-    [new Item("Common Item", 0, 3), 0, 2],
-    [new Item("Common Item", 0, 1), 0, 0],
-    [new Item("Common Item", 0, 0), 0, 0],
+    [new Item("Common Item", 0, 3), -1, 1],
+    [new Item("Common Item", 0, 1), -1, 0],
+    [new Item("Common Item", 0, 0), -1, 0],
+    [new Item("Common Item", -1, 3), -2, 1],
+    [new Item("Common Item", -1, 0), -2, 0],
   ];
 
   // Good Wine
@@ -19,9 +21,11 @@ describe("GildedTros", () => {
   // Can't get better than 50
   const wineTestCases: [Item, number, number][] = [
     [new Item("Good Wine", 2, 3), 1, 4],
-    [new Item("Good Wine", 0, 3), 0, 4],
     [new Item("Good Wine", 2, 50), 1, 50],
-    [new Item("Good Wine", 0, 50), 0, 50],
+    [new Item("Good Wine", 0, 3), -1, 5],
+    [new Item("Good Wine", 0, 50), -1, 50],
+    [new Item("Good Wine", -1, 3), -2, 5],
+    [new Item("Good Wine", -1, 50), -2, 50],
   ];
 
   // B-DAWG Keychain
@@ -29,16 +33,34 @@ describe("GildedTros", () => {
   // Never gets better or worse
   const keyChainTestCases: [Item, number, number][] = [
     [new Item("B-DAWG Keychain", 2, 3), 2, 3],
+    [new Item("B-DAWG Keychain", 0, 0), 0, 0],
+  ];
+
+  // Backstage Passes
+  // Increases in quality if sellIn goes down
+  // When sellIn lower than 10, quality increases by 2
+  // When sellIn lower than 5, quality increases by 3
+  // When sellIn goes negative, quality is set to 0
+  const backStagePassesTestCases: [Item, number, number][] = [
+    [new Item("Backstage passes for Re:Factor", 20, 5), 19, 6],
+    [new Item("Backstage passes for Re:Factor", 11, 5), 10, 6],
+    [new Item("Backstage passes for Re:Factor", 10, 5), 9, 7],
+    [new Item("Backstage passes for Re:Factor", 6, 5), 5, 7],
+    [new Item("Backstage passes for Re:Factor", 5, 5), 4, 8],
+    [new Item("Backstage passes for Re:Factor", 1, 5), 0, 8],
+    [new Item("Backstage passes for Re:Factor", 0, 5), -1, 0],
+    [new Item("Backstage passes for Re:Factor", -1, 5), -2, 0],
+    [new Item("Backstage passes for HAXX", 20, 5), 19, 6],
+    [new Item("Backstage passes for HAXX", 11, 5), 10, 6],
+    [new Item("Backstage passes for HAXX", 10, 5), 9, 7],
+    [new Item("Backstage passes for HAXX", 6, 5), 5, 7],
+    [new Item("Backstage passes for HAXX", 5, 5), 4, 8],
+    [new Item("Backstage passes for HAXX", 1, 5), 0, 8],
+    [new Item("Backstage passes for HAXX", 0, 5), -1, 0],
+    [new Item("Backstage passes for HAXX", -1, 5), -2, 0],
   ];
 
   //   const items = [
-  // new Item("Ring of Cleansening Code", 10, 20)],
-  // new Item("Elixir of the SOLID", 5, 7)
-  // new Item("B-DAWG Keychain", 0, 80)
-  // new Item("B-DAWG Keychain", -1, 80)
-  // new Item("Backstage passes for Re:Factor", 15, 20)
-  // new Item("Backstage passes for Re:Factor", 10, 49)
-  // new Item("Backstage passes for HAXX", 5, 49)
   // new Item("Duplicate Code", 3, 6)
   // new Item("Long Methods", 3, 6)
   // new Item("Ugly Variable Names", 3, 6)
@@ -48,6 +70,7 @@ describe("GildedTros", () => {
     ...commonTestCases,
     ...wineTestCases,
     ...keyChainTestCases,
+    ...backStagePassesTestCases,
   ];
 
   const testItems = testCases.map((testCase) => testCase[0]);

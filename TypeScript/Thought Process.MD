@@ -42,4 +42,8 @@ I'm now able to also check for the updated sellIn field.
 When adding some other tests, saw some tests failing already, where `sellIn` date could become `-1`.
 While I want to avoid working on the actual implementation code, I needed to add a `not smaller than 0` check for the tests to run succesfully again.
 Let's hope I don't encounter more of these until after all tests have been written.
-Stopping for today, continuing tomorrow.
+
+07/08/2023 - 21:57
+Reversed the `sellIn` date 0 check since that date could actualy become negative upon rereading the assignment.
+Added all tests for the boardingPasses, had to make small changes to the actual implementation so it could take the HAXX conference into account.
+This time I'm pretty sure if was needed and the logic was faulty.
