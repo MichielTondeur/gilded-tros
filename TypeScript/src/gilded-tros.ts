@@ -35,7 +35,7 @@ export class GildedTros {
         }
       }
 
-      if (this.items[i].name != "B-DAWG Keychain" && this.items[i].sellIn > 0) {
+      if (this.items[i].name != "B-DAWG Keychain") {
         this.items[i].sellIn = this.items[i].sellIn - 1;
       }
 
