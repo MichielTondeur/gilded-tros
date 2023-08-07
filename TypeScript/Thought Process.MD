@@ -16,3 +16,8 @@ Made a very rough working test, just matching names.
 Would like to use jest.each, but not sure how to do this with classes, I mostly write functional.
 Added jest `describe` and `test` blocks since the test were complaining.
 Added `@babel/preset-env` to dev dependencies since the tests were complaining.
+
+07/08/2023 - 20:32
+Focus on getting `Good Wine` tests working first.
+Still not too happy with the current structure, need a proper way to group items and expected resulsts together.
+Not sure if I will need to test the sellIn date at some point as well.
