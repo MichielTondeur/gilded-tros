@@ -7,6 +7,7 @@ describe("GildedTros", () => {
     new Item("Good Wine", 2, 3),
     // Gets even better when expired, so plus 2
     new Item("Good Wine", 0, 3),
+    new Item("Good Wine", 0, 50),
     // new Item("Ring of Cleansening Code", 10, 20)],
     // new Item("Good Wine", 2, 0)
     // new Item("Elixir of the SOLID", 5, 7)
@@ -20,7 +21,7 @@ describe("GildedTros", () => {
     // new Item("Ugly Variable Names", 3, 6)
   ];
 
-  const results = [4, 5];
+  const results = [4, 5, 50];
 
   describe("updateQuality", () => {
     describe("WHEN calling updateQuality", () => {

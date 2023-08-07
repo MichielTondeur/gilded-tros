@@ -21,3 +21,7 @@ Added `@babel/preset-env` to dev dependencies since the tests were complaining.
 Focus on getting `Good Wine` tests working first.
 Still not too happy with the current structure, need a proper way to group items and expected resulsts together.
 Not sure if I will need to test the sellIn date at some point as well.
+
+07/08/2023 - 20:36
+Take `Can't be more than 50` condition into consideration.
+Also noting here for context I'm running jest watch mode to quickly iterate over my tests.
