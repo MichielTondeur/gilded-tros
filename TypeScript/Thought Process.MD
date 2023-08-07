@@ -34,3 +34,12 @@ Group the items together in their own array for now, still not great since the r
 Add keyChain test case
 I need to check the sell date doesn't lower for the Keychain, so I need to add this field in my expect somehow.
 I'll spend some time finding a proper solution to group everything properly, since my current approach won't continue to work.
+
+07/08/2023 - 21:25
+Grouped the tests a bit better so I'm able to match the testcases with the expected results.
+Still messy imho but for now it works.
+I'm now able to also check for the updated sellIn field.
+When adding some other tests, saw some tests failing already, where `sellIn` date could become `-1`.
+While I want to avoid working on the actual implementation code, I needed to add a `not smaller than 0` check for the tests to run succesfully again.
+Let's hope I don't encounter more of these until after all tests have been written.
+Stopping for today, continuing tomorrow.
