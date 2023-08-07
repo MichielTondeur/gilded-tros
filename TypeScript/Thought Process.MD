@@ -25,3 +25,7 @@ Not sure if I will need to test the sellIn date at some point as well.
 07/08/2023 - 20:36
 Take `Can't be more than 50` condition into consideration.
 Also noting here for context I'm running jest watch mode to quickly iterate over my tests.
+
+07/08/2023 - 20:44
+Add commonItems test case
+Group the items together in their own array for now, still not great since the results are not grouped together with the actual test case.

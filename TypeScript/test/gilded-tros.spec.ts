@@ -1,15 +1,36 @@
 import { Item } from "../src/item";
 import { GildedTros } from "../src/gilded-tros";
 describe("GildedTros", () => {
-  const items = [
-    // Good Wine
-    // Gets better when getting older, so plus 1
+  // Common Item
+  // Gets worse when getting older, so minus 1
+  // Gets even worse when expired, so minus 2
+  // Can't get worse than 0
+  const commonItems = [
+    new Item("Common Item", 2, 3),
+    new Item("Common Item", 0, 3),
+    new Item("Common Item", 2, 0),
+    new Item("Common Item", 0, 0),
+  ];
+
+  const commonResults = [2, 1, 0, 0];
+
+  // Good Wine
+  // Gets better when getting older, so plus 1
+  // Gets even better when expired, so plus 2
+  // Can't get better than 50
+  const wineItems = [
     new Item("Good Wine", 2, 3),
-    // Gets even better when expired, so plus 2
     new Item("Good Wine", 0, 3),
+    new Item("Good Wine", 2, 50),
     new Item("Good Wine", 0, 50),
+  ];
+
+  const wineResults = [4, 5, 50, 50];
+
+  const items = [
+    ...commonItems,
+    ...wineItems,
     // new Item("Ring of Cleansening Code", 10, 20)],
-    // new Item("Good Wine", 2, 0)
     // new Item("Elixir of the SOLID", 5, 7)
     // new Item("B-DAWG Keychain", 0, 80)
     // new Item("B-DAWG Keychain", -1, 80)
@@ -21,7 +42,7 @@ describe("GildedTros", () => {
     // new Item("Ugly Variable Names", 3, 6)
   ];
 
-  const results = [4, 5, 50];
+  const results = [...commonResults, ...wineResults];
 
   describe("updateQuality", () => {
     describe("WHEN calling updateQuality", () => {
