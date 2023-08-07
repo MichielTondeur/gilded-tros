@@ -47,3 +47,8 @@ Let's hope I don't encounter more of these until after all tests have been writt
 Reversed the `sellIn` date 0 check since that date could actualy become negative upon rereading the assignment.
 Added all tests for the boardingPasses, had to make small changes to the actual implementation so it could take the HAXX conference into account.
 This time I'm pretty sure if was needed and the logic was faulty.
+
+07/08/2023 - 22:07
+Added the smelly test cases.
+The tests are failing, as to be expected since this code is not implemented yet.
+Will continue tomorrow.

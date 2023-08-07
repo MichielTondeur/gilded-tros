@@ -60,17 +60,48 @@ describe("GildedTros", () => {
     [new Item("Backstage passes for HAXX", -1, 5), -2, 0],
   ];
 
-  //   const items = [
-  // new Item("Duplicate Code", 3, 6)
-  // new Item("Long Methods", 3, 6)
-  // new Item("Ugly Variable Names", 3, 6)
-  //   ];
+  // Smelly Items
+  // Gets worse faster when getting older, so minus 2
+  // Gets even worse faster when expired, so minus 4
+  // Can't get worse than 0
+  const smellyTestCases: [Item, number, number][] = [
+    [new Item("Duplicate Code", 2, 3), 1, 1],
+    [new Item("Duplicate Code", 2, 0), 1, 0],
+    [new Item("Duplicate Code", 0, 4), -1, 0],
+    [new Item("Duplicate Code", 0, 3), -1, 0],
+    [new Item("Duplicate Code", 0, 1), -1, 0],
+    [new Item("Duplicate Code", 0, 0), -1, 0],
+    [new Item("Duplicate Code", -1, 9), -2, 5],
+    [new Item("Duplicate Code", -1, 3), -2, 0],
+    [new Item("Duplicate Code", -1, 0), -2, 0],
+
+    [new Item("Long Methods", 2, 3), 1, 1],
+    [new Item("Long Methods", 2, 0), 1, 0],
+    [new Item("Long Methods", 0, 4), -1, 0],
+    [new Item("Long Methods", 0, 3), -1, 0],
+    [new Item("Long Methods", 0, 1), -1, 0],
+    [new Item("Long Methods", 0, 0), -1, 0],
+    [new Item("Long Methods", -1, 9), -2, 5],
+    [new Item("Long Methods", -1, 3), -2, 0],
+    [new Item("Long Methods", -1, 0), -2, 0],
+
+    [new Item("Ugly Variable Names", 2, 3), 1, 1],
+    [new Item("Ugly Variable Names", 2, 0), 1, 0],
+    [new Item("Ugly Variable Names", 0, 4), -1, 0],
+    [new Item("Ugly Variable Names", 0, 3), -1, 0],
+    [new Item("Ugly Variable Names", 0, 1), -1, 0],
+    [new Item("Ugly Variable Names", 0, 0), -1, 0],
+    [new Item("Ugly Variable Names", -1, 9), -2, 5],
+    [new Item("Ugly Variable Names", -1, 3), -2, 0],
+    [new Item("Ugly Variable Names", -1, 0), -2, 0],
+  ];
 
   const testCases = [
     ...commonTestCases,
     ...wineTestCases,
     ...keyChainTestCases,
     ...backStagePassesTestCases,
+    ...smellyTestCases,
   ];
 
   const testItems = testCases.map((testCase) => testCase[0]);
