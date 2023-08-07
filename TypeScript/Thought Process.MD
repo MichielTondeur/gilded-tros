@@ -29,3 +29,8 @@ Also noting here for context I'm running jest watch mode to quickly iterate over
 07/08/2023 - 20:44
 Add commonItems test case
 Group the items together in their own array for now, still not great since the results are not grouped together with the actual test case.
+
+07/08/2023 - 20:44
+Add keyChain test case
+I need to check the sell date doesn't lower for the Keychain, so I need to add this field in my expect somehow.
+I'll spend some time finding a proper solution to group everything properly, since my current approach won't continue to work.

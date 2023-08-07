@@ -27,9 +27,17 @@ describe("GildedTros", () => {
 
   const wineResults = [4, 5, 50, 50];
 
+  // B-DAWG Keychain
+  // Sell date never lowers
+  // Never gets better or worse
+  const keyChainItems = [new Item("B-DAWG Keychain", 2, 3)];
+
+  const keyChainResults = [3];
+
   const items = [
     ...commonItems,
     ...wineItems,
+    ...keyChainItems,
     // new Item("Ring of Cleansening Code", 10, 20)],
     // new Item("Elixir of the SOLID", 5, 7)
     // new Item("B-DAWG Keychain", 0, 80)
@@ -42,7 +50,7 @@ describe("GildedTros", () => {
     // new Item("Ugly Variable Names", 3, 6)
   ];
 
-  const results = [...commonResults, ...wineResults];
+  const results = [...commonResults, ...wineResults, ...keyChainResults];
 
   describe("updateQuality", () => {
     describe("WHEN calling updateQuality", () => {
