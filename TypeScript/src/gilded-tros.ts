@@ -3,20 +3,6 @@ import { Item } from "./item";
 export class GildedTros {
   constructor(public items: Array<Item>) {}
 
-  private oldUpdateQuality(item: Item): void {
-    if (item.quality > 0) {
-      item.quality = item.quality - 1;
-    }
-
-    item.sellIn = item.sellIn - 1;
-
-    if (item.sellIn < 0) {
-      if (item.quality > 0) {
-        item.quality = item.quality - 1;
-      }
-    }
-  }
-
   private updateWine(item: Item) {
     if (item.quality < 50) item.quality = item.quality + 1;
 
@@ -49,6 +35,14 @@ export class GildedTros {
     }
   }
 
+  private updateCommon(item: Item) {
+    if (item.quality > 0) item.quality = item.quality - 1;
+
+    item.sellIn = item.sellIn - 1;
+
+    if (item.sellIn < 0 && item.quality > 0) item.quality = item.quality - 1;
+  }
+
   private isGoodWine(name: string) {
     return name === "Good Wine";
   }
@@ -76,7 +70,7 @@ export class GildedTros {
         case this.isKeyChain(name):
           break;
         default:
-          this.oldUpdateQuality(this.items[i]);
+          this.updateCommon(this.items[i]);
           break;
       }
     }

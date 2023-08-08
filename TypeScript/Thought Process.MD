@@ -82,3 +82,7 @@ Exctraced the Backstage Pass logic.
 I had to change my switch case to be a boolean that checks the name matches a certain condition.
 I needed this to use a regex to match all strings matching `Backstage Passes`.
 Old logic is pretty much cleaned up and only still has the default common item cases.
+
+08/08/2023 - 20:14
+Exctraced the common item default logic.
+Next up is cleaning up the code some more.
