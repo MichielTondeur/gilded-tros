@@ -45,7 +45,7 @@ Let's hope I don't encounter more of these until after all tests have been writt
 
 07/08/2023 - 21:57
 Reversed the `sellIn` date 0 check since that date could actualy become negative upon rereading the assignment.
-Added all tests for the boardingPasses, had to make small changes to the actual implementation so it could take the HAXX conference into account.
+Added all tests for the backstage passes, had to make small changes to the actual implementation so it could take the HAXX conference into account.
 This time I'm pretty sure if was needed and the logic was faulty.
 
 07/08/2023 - 22:07
@@ -59,9 +59,17 @@ Will continue tomorrow.
 Resumed work.
 Tests are written so I'll commence refactoring.
 Clearest solution seems like a switch case, since it makes sense every single item has it's own logic.
-I'll try extracting the first case, maybe boarding passes.
+I'll try extracting the first case, maybe backstage passes.
 
 08/08/2023 - 19:30
-Turn of smelly test cases for now.
+Turn off smelly test cases for now.
 Extract old updateDetails to it's own separate method and have it be the default switch case.
 Test still run fine.
+
+08/08/2023 - 19:49
+Good wine logic extracted.
+Created a private updateWine method.
+Logic inside maybe could be it's own small mini method?
+Let's extract the rest first and let's see which operations are common enough.
+I'm not allowed to edit Item, but a decreaseQuality and decreaseSellIn could make sense to add there.
+I might just do it still.
