@@ -48,20 +48,20 @@ export class GildedTros {
   }
 
   public updateQuality(): void {
-    for (let i = 0; i < this.items.length; i++) {
-      const { name } = this.items[i];
+    for (const item of this.items) {
+      const { name } = item;
 
       switch (true) {
         case this.isGoodWine(name):
-          this.updateWine(this.items[i]);
+          this.updateWine(item);
           break;
         case this.isBackstagePass(name):
-          this.updateBackstagePass(this.items[i]);
+          this.updateBackstagePass(item);
           break;
         case this.isKeyChain(name):
           break;
         default:
-          this.updateCommon(this.items[i]);
+          this.updateCommon(item);
           break;
       }
     }
