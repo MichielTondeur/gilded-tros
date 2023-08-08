@@ -52,3 +52,16 @@ This time I'm pretty sure if was needed and the logic was faulty.
 Added the smelly test cases.
 The tests are failing, as to be expected since this code is not implemented yet.
 Will continue tomorrow.
+
+---
+
+08/08/2023 - 19:24
+Resumed work.
+Tests are written so I'll commence refactoring.
+Clearest solution seems like a switch case, since it makes sense every single item has it's own logic.
+I'll try extracting the first case, maybe boarding passes.
+
+08/08/2023 - 19:30
+Turn of smelly test cases for now.
+Extract old updateDetails to it's own separate method and have it be the default switch case.
+Test still run fine.

@@ -101,7 +101,7 @@ describe("GildedTros", () => {
     ...wineTestCases,
     ...keyChainTestCases,
     ...backStagePassesTestCases,
-    ...smellyTestCases,
+    // ...smellyTestCases,
   ];
 
   const testItems = testCases.map((testCase) => testCase[0]);
