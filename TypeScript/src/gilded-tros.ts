@@ -25,6 +25,18 @@ export class GildedTros {
     if (item.sellIn < 0) item.resetQuality();
   }
 
+  private updateSmellyItems(item: Item) {
+    if (item.quality > 1) item.decreaseQuality(2);
+    else if (item.quality > 0) item.decreaseQuality(1);
+
+    item.decreaseSellIn(1);
+
+    if (item.sellIn < 0) {
+      if (item.quality > 1) item.decreaseQuality(2);
+      else if (item.quality > 0) item.decreaseQuality(1);
+    }
+  }
+
   private updateCommon(item: Item) {
     if (item.quality > 0) item.decreaseQuality(1);
 
@@ -46,6 +58,14 @@ export class GildedTros {
     return /^Backstage passes.*$/.test(name);
   }
 
+  private isSmellyItem(name: string) {
+    return (
+      name === "Duplicate Code" ||
+      name === "Long Methods" ||
+      name === "Ugly Variable Names"
+    );
+  }
+
   public updateQuality(): void {
     for (const item of this.items) {
       const { name } = item;
@@ -56,6 +76,9 @@ export class GildedTros {
           break;
         case this.isBackstagePass(name):
           this.updateBackstagePass(item);
+          break;
+        case this.isSmellyItem(name):
+          this.updateSmellyItems(item);
           break;
         case this.isKeyChain(name):
           break;
