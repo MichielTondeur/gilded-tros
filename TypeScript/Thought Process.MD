@@ -101,3 +101,6 @@ I allowed the methods to take in a number to potentialy increase/decrease with e
 08/08/2023 - 20:47
 Brought back smelly test cases.
 Added logic for the smelly items.
+
+08/08/2023 - 20:49
+Taking a break, might revisit code some more or the tests, since I'm not too happy about those.
