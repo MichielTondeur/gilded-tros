@@ -4,48 +4,15 @@ export class GildedTros {
   constructor(public items: Array<Item>) {}
 
   private oldUpdateQuality(item: Item): void {
-    if (
-      item.name != "Backstage passes for Re:Factor" &&
-      item.name != "Backstage passes for HAXX"
-    ) {
-      if (item.quality > 0) {
-        item.quality = item.quality - 1;
-      }
-    } else {
-      if (item.quality < 50) {
-        item.quality = item.quality + 1;
-
-        if (
-          item.name == "Backstage passes for Re:Factor" ||
-          item.name == "Backstage passes for HAXX"
-        ) {
-          if (item.sellIn < 11) {
-            if (item.quality < 50) {
-              item.quality = item.quality + 1;
-            }
-          }
-
-          if (item.sellIn < 6) {
-            if (item.quality < 50) {
-              item.quality = item.quality + 1;
-            }
-          }
-        }
-      }
+    if (item.quality > 0) {
+      item.quality = item.quality - 1;
     }
 
     item.sellIn = item.sellIn - 1;
 
     if (item.sellIn < 0) {
-      if (
-        item.name != "Backstage passes for Re:Factor" &&
-        item.name != "Backstage passes for HAXX"
-      ) {
-        if (item.quality > 0) {
-          item.quality = item.quality - 1;
-        }
-      } else {
-        item.quality = item.quality - item.quality;
+      if (item.quality > 0) {
+        item.quality = item.quality - 1;
       }
     }
   }
@@ -58,13 +25,55 @@ export class GildedTros {
     if (item.sellIn < 0 && item.quality < 50) item.quality = item.quality + 1;
   }
 
+  private updateBackstagePass(item: Item) {
+    if (item.quality < 50) {
+      item.quality = item.quality + 1;
+
+      if (item.sellIn < 11) {
+        if (item.quality < 50) {
+          item.quality = item.quality + 1;
+        }
+      }
+
+      if (item.sellIn < 6) {
+        if (item.quality < 50) {
+          item.quality = item.quality + 1;
+        }
+      }
+    }
+
+    item.sellIn = item.sellIn - 1;
+
+    if (item.sellIn < 0) {
+      item.quality = item.quality - item.quality;
+    }
+  }
+
+  private isGoodWine(name: string) {
+    return name === "Good Wine";
+  }
+
+  private isKeyChain(name: string) {
+    return name === "B-DAWG Keychain";
+  }
+
+  // Match all items beginning with 'Backstage passes'
+  private isBackstagePass(name: string) {
+    return /^Backstage passes.*$/.test(name);
+  }
+
   public updateQuality(): void {
     for (let i = 0; i < this.items.length; i++) {
-      switch (this.items[i].name) {
-        case "Good Wine":
+      const { name } = this.items[i];
+
+      switch (true) {
+        case this.isGoodWine(name):
           this.updateWine(this.items[i]);
           break;
-        case "B-DAWG Keychain":
+        case this.isBackstagePass(name):
+          this.updateBackstagePass(this.items[i]);
+          break;
+        case this.isKeyChain(name):
           break;
         default:
           this.oldUpdateQuality(this.items[i]);
