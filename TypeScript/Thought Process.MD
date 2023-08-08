@@ -93,3 +93,7 @@ Could still be smaller or needs some JSdocs to explain properly, this is some co
 
 08/08/2023 - 20:30
 Use cleaner for loop
+
+08/08/2023 - 20:37
+Added some basic operations to Item to manipulate the quality and sellIn.
+I allowed the methods to take in a number to potentialy increase/decrease with even bigger increments.
