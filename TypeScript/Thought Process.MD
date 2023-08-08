@@ -86,3 +86,7 @@ Old logic is pretty much cleaned up and only still has the default common item c
 08/08/2023 - 20:20
 Extracted the common item default logic.
 Next up is cleaning up the code some more.
+
+08/08/2023 - 20:25
+Small update to clean up some conditions.
+Could still be smaller or needs some JSdocs to explain properly, this is some code you don't get at first sight if you were to repeat it in x amount of time.
