@@ -73,3 +73,6 @@ Logic inside maybe could be it's own small mini method?
 Let's extract the rest first and let's see which operations are common enough.
 I'm not allowed to edit Item, but a decreaseQuality and decreaseSellIn could make sense to add there.
 I might just do it still.
+
+08/08/2023 - 19:54
+Easy extraction of KeyChain logic
