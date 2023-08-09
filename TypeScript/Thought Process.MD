@@ -156,3 +156,42 @@ Played around a bit and removed the babel preset, should not be necessary for th
 Made some changes so the build output tests don't run.
 Should probably stop them from getting included in the build in the first place, but don't feel like doing this rn.
 This is my final commit, thanks for following!
+
+---
+
+## 09/08/2023 - 01:08
+
+All the old code / the first solution can be found in the solution1 folder.
+
+Revisited the code and made a second solution, one that violates the initial requirements for this exercise.
+I basically tried to lean in as much as I could into inheritance and made some new classes that extend the base Item class.
+In this way, I was able to extract a lot more logic into the actual classes, and I just have to call an update method, not really caring about what happens behind the scenes, so proper decoupling.
+While I came to a nice solution, I really don't like inheritance and I would favor composition almost any day of the week.
+What if you suddenly need an item that only has quality but no sellIn property?
+Or classes inheriting classes inheriting classes inheriting classes inheriting ...
+
+I just coded without commiting since this was extra, but a couple of notable things in this change are:
+
+- `as const satisfies`
+- a prefixed string type for the backstage passes, which restrict other string to be used that don't begin with `Backstage passes`
+- type predicates to narrow the `AllItems` type in the update if conditions
+- a neat trick to get all possible names of the `SmellyItems` using keyof and typeof
+- constructors with default values
+- a barrel file that exposes all CONSTANTS and class types to clean up the imports
+
+The code is currently not working properly, as their is a small part I don't know how to fix just yet, being the default case at the end of all the if conditions inside of `updateQuality`.
+The last possible case is a commonItem, but the type of the item is still `AllItems`.
+For me this is a discriminated union type, so it should figure it out that this is the last possible case.
+But there is something stopping it from infering the correct types, which is why I fell back to the type predicates.
+However this does mean my last condition is currently not correctly typed.
+
+To get rid of the AllItems, I tried the following:
+
+```typescript
+// ugly hack, not sure how to handle this last case
+const commonItem = item as CommonItem;
+commonItem.update();
+```
+
+While typescript is no longer yelling at me, the tests fail to run as of now, claiming that `commonItem.update() is not a function`.
+I'll try to figure out a solution tomorrow.
