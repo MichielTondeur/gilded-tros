@@ -104,3 +104,13 @@ Added logic for the smelly items.
 
 08/08/2023 - 20:49
 Taking a break, might revisit code some more or the tests, since I'm not too happy about those.
+
+---
+
+09/08/2023 - 18:09
+Resumed work.
+
+09/08/2023 - 18:42
+Moved some magic variables to constants.
+Used `as const` together with `satisfies` to keep the actual values of the constants.
+Moved to a regex constructor for the backstage passes.

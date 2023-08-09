@@ -1,23 +1,36 @@
-import { Item } from "./item";
+import { Item, CONSTANTS as ITEM_CONSTANTS } from "./item";
 
+const {
+  MAX_QUALITY,
+  BACKSTAGE_PASS_WAVE_1,
+  BACKSTAGE_PASS_WAVE_2,
+  GOOD_WINE,
+  B_DAWG_KEYCHAIN,
+  DUPLICATE_CODE,
+  LONG_METHODS,
+  UGLY_VARIABLE_NAMES,
+  BACKSTAGE_PASSES,
+} = ITEM_CONSTANTS;
 export class GildedTros {
   constructor(public items: Array<Item>) {}
 
   private updateWine(item: Item) {
-    if (item.quality < 50) item.increaseQuality(1);
+    if (item.quality < MAX_QUALITY) item.increaseQuality(1);
 
     item.decreaseSellIn(1);
 
-    if (item.sellIn < 0 && item.quality < 50) item.increaseQuality(1);
+    if (item.sellIn < 0 && item.quality < MAX_QUALITY) item.increaseQuality(1);
   }
 
   private updateBackstagePass(item: Item) {
-    if (item.quality < 50) {
+    if (item.quality < MAX_QUALITY) {
       item.increaseQuality(1);
 
-      if (item.sellIn < 11 && item.quality < 50) item.increaseQuality(1);
+      if (item.sellIn < BACKSTAGE_PASS_WAVE_1 && item.quality < MAX_QUALITY)
+        item.increaseQuality(1);
 
-      if (item.sellIn < 6 && item.quality < 50) item.increaseQuality(1);
+      if (item.sellIn < BACKSTAGE_PASS_WAVE_2 && item.quality < MAX_QUALITY)
+        item.increaseQuality(1);
     }
 
     item.decreaseSellIn(1);
@@ -46,23 +59,25 @@ export class GildedTros {
   }
 
   private isGoodWine(name: string) {
-    return name === "Good Wine";
+    return name === GOOD_WINE;
   }
 
   private isKeyChain(name: string) {
-    return name === "B-DAWG Keychain";
+    return name === B_DAWG_KEYCHAIN;
   }
 
-  // Match all items beginning with 'Backstage passes'
   private isBackstagePass(name: string) {
-    return /^Backstage passes.*$/.test(name);
+    // Match all items beginning with 'Backstage passes'
+    const backStagePassesRegex = new RegExp(`^${BACKSTAGE_PASSES}.*$`);
+
+    return backStagePassesRegex.test(name);
   }
 
   private isSmellyItem(name: string) {
     return (
-      name === "Duplicate Code" ||
-      name === "Long Methods" ||
-      name === "Ugly Variable Names"
+      name === DUPLICATE_CODE ||
+      name === LONG_METHODS ||
+      name === UGLY_VARIABLE_NAMES
     );
   }
 
