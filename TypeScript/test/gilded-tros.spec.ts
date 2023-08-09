@@ -2,9 +2,9 @@ import { Item } from "../src/item";
 import { GildedTros } from "../src/gilded-tros";
 describe("GildedTros", () => {
   // Common Item
-  // Gets worse when getting older, so minus 1
-  // Gets even worse when expired, so minus 2
-  // Can't get worse than 0
+  // Quality gets worse when getting older, so minus 1
+  // Quality gets even worse when expired, so minus 2
+  // Quality can't get worse than 0
   const commonTestCases: [Item, number, number][] = [
     [new Item("Common Item", 2, 3), 1, 2],
     [new Item("Common Item", 2, 0), 1, 0],
@@ -16,9 +16,9 @@ describe("GildedTros", () => {
   ];
 
   // Good Wine
-  // Gets better when getting older, so plus 1
-  // Gets better when expired, so plus 1
-  // Can't get better than 50
+  // Quality gets better when getting older, so plus 1
+  // Quality gets even better when expired, so plus 1
+  // Quality can't get better than 50
   const wineTestCases: [Item, number, number][] = [
     [new Item("Good Wine", 2, 3), 1, 4],
     [new Item("Good Wine", 2, 50), 1, 50],
@@ -29,15 +29,15 @@ describe("GildedTros", () => {
   ];
 
   // B-DAWG Keychain
-  // Sell date never lowers
-  // Never gets better or worse
+  // SellIn never gets higher or lower
+  // Quality never gets better or worse
   const keyChainTestCases: [Item, number, number][] = [
-    [new Item("B-DAWG Keychain", 2, 3), 2, 3],
-    [new Item("B-DAWG Keychain", 0, 0), 0, 0],
+    [new Item("B-DAWG Keychain", 2, 80), 2, 80],
+    [new Item("B-DAWG Keychain", 0, 80), 0, 80],
   ];
 
   // Backstage Passes
-  // Increases in quality if sellIn goes down
+  // Quality gets better when getting older, so plus 1
   // When sellIn lower than 10, quality increases by 2
   // When sellIn lower than 5, quality increases by 3
   // When sellIn goes negative, quality is set to 0
@@ -61,9 +61,9 @@ describe("GildedTros", () => {
   ];
 
   // Smelly Items
-  // Gets worse faster when getting older, so minus 2
-  // Gets even worse faster when expired, so minus 4
-  // Can't get worse than 0
+  // Quality gets worse when getting older, so minus 2
+  // Quality gets even worse when expired, so minus 4
+  // Quality can't get worse than 0
   const smellyTestCases: [Item, number, number][] = [
     [new Item("Duplicate Code", 2, 3), 1, 1],
     [new Item("Duplicate Code", 2, 0), 1, 0],

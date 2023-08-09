@@ -114,3 +114,7 @@ Resumed work.
 Moved some magic variables to constants.
 Used `as const` together with `satisfies` to keep the actual values of the constants.
 Moved to a regex constructor for the backstage passes.
+
+09/08/2023 - 18:58
+Contemplated adding JS Doc to the methods but I feel like they speak for themselves.
+Changed some of the descriptions of the test cases.
