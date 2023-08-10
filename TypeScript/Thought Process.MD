@@ -195,3 +195,15 @@ commonItem.update();
 
 While typescript is no longer yelling at me, the tests fail to run as of now, claiming that `commonItem.update() is not a function`.
 I'll try to figure out a solution tomorrow.
+
+---
+
+## 10/08/2023 - 21:00 - 21:11
+
+Altered my if conditions to if else, so I get proper type narrowing.
+Except that it was failing on KeyChainItem and for some reason was not figuring out the correct type.
+As a solution, I had to add some random method to the KeyChain class which I think makes it unique compared to CommonItem?
+It's a hack and a proper solution should be found, maybe not using the classes as types but adding a custom type / interface and use that one?
+This is the last commit
+
+---

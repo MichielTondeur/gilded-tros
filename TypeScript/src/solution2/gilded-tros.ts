@@ -52,15 +52,12 @@ export class GildedTros {
   public updateQuality(): void {
     for (const item of this.items) {
       if (this.isGoodWine(item)) item.update();
-      if (this.isBackstagePass(item)) item.update();
-      if (this.isBackstagePass(item)) item.update;
-      if (this.isSmellyItem(item)) item.update();
-      if (this.isKeyChain(item)) {
+      else if (this.isBackstagePass(item)) item.update();
+      else if (this.isSmellyItem(item)) item.update();
+      else if (this.isKeyChain(item)) {
+      } else {
+        item.update();
       }
-
-      // ugly hack, not sure how to handle this last case
-      const commonItem = item as CommonItem;
-      commonItem.update();
     }
   }
 }

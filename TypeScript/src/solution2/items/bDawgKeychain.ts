@@ -16,4 +16,8 @@ export class BDawgKeychainItem extends Item {
   constructor(sellIn: number) {
     super(B_DAWG_KEYCHAIN, sellIn, DEFAULT_QUALITY);
   }
+
+  // Super hacky way to make this BDawgKeychainItem class unique
+  // so I'm able to use type predicates and type narrowing inside of updateQuality
+  private a() {}
 }

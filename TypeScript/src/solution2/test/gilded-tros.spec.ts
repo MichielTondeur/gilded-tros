@@ -26,7 +26,7 @@ describe("GildedTros", () => {
   // Quality gets even better when expired, so plus 1
   // Quality can't get better than 50
   const wineTestCases: [GoodWineItem, number, number][] = [
-    [new GoodWineItem(2, 5), 1, 4],
+    [new GoodWineItem(2, 3), 1, 4],
     [new GoodWineItem(2, 50), 1, 50],
     [new GoodWineItem(0, 3), -1, 5],
     [new GoodWineItem(0, 50), -1, 50],
